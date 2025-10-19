@@ -1,6 +1,24 @@
 <div class="app-container">
+  <div>
+    <button class="btn btn-sm btn-secondary m-2" (click)="switchLang('en')">En</button>
+    <button class="btn btn-sm btn-secondary m-2" (click)="switchLang('da')">Da</button>
+  </div>
   <router-outlet></router-outlet>
 </div>
 
-<p-confirmdialog> </p-confirmdialog>
+<p-confirmdialog>
+  <ng-template #headless let-message let-onAccept="onAccept" let-onReject="onReject">
+    <div class="confirm-dialog-header">{{ message.header | translate }}</div>
+
+    <div class="p-4">
+      <div class="confirm-dialog-message">{{ message.message | translate }}</div>
+
+      <div class="confirm-dialog-footer">
+        <button class="btn btn-sm btn-success" (click)="onAccept()" styleClass="w-32">{{ 'Yes' | translate }}</button>
+        <button class="btn btn-sm btn-secondary" (click)="onReject()" styleClass="w-32">{{ 'No' | translate }}</button>
+      </div>
+    </div>
+  </ng-template>
+</p-confirmdialog>
+
 <p-toast></p-toast>

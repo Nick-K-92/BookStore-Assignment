@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { BookCreateDTO, BookDTO, BookstoreBffService, BookUpdateDTO } from '@openapi';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { InputGroupModule } from 'primeng/inputgroup';
@@ -9,7 +10,14 @@ import { ToggleSwitchModule } from 'primeng/toggleswitch';
 
 @Component({
   selector: 'mxs-book-crud',
-  imports: [CommonModule, ReactiveFormsModule, ToggleSwitchModule, InputGroupModule, InputGroupAddonModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    ToggleSwitchModule,
+    InputGroupModule,
+    InputGroupAddonModule,
+    TranslateModule,
+  ],
   templateUrl: './book-crud.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -51,7 +59,7 @@ export class BookCrudComponent implements OnInit {
 
   onSubmit() {
     this.confirmationService.confirm({
-      header: this.book != null ? 'Update Book' : 'Add Book',
+      header: this.book != null ? 'Update Book' : 'Create Book',
       message: 'Are you sure you want to continue?',
       icon: 'fas fa-exclamation-circle',
       accept: () => {
@@ -76,7 +84,7 @@ export class BookCrudComponent implements OnInit {
       const bookCreateDto: BookCreateDTO = this.form!.value;
       this.bookstoreBffService.createBook({ bookCreateDTO: bookCreateDto }).subscribe({
         next: () => {
-          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Book Saved!' });
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Book Created!' });
           this.save.emit();
         },
         error: () => {

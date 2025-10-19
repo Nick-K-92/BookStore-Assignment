@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
 import { TranslateModule } from '@ngx-translate/core';
 import { BookDTO, BookstoreBffService } from '@openapi';
 import { DialogModule } from 'primeng/dialog';
@@ -22,7 +21,6 @@ import { BookCrudComponent } from './book-crud/book-crud.component';
     CommonModule,
     FormsModule,
     TranslateModule,
-    MatCardModule,
     TableModule,
     DialogModule,
     ToggleSwitchModule,

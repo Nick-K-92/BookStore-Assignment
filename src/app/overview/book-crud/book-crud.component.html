@@ -1,35 +1,35 @@
 <div>
   <form action="" [formGroup]="form!" (submit)="onSubmit()">
     <div class="form-field">
-      <div class="form-field-header">Title</div>
+      <div class="form-field-header">{{ 'Title' | translate }}</div>
       <div class="form-field-control">
         <input type="text" [formControlName]="'title'" />
       </div>
     </div>
 
     <div class="form-field">
-      <div class="form-field-header">Price</div>
+      <div class="form-field-header">{{ 'Price' | translate }}</div>
       <div class="form-field-control">
         <input type="number" min="0" [formControlName]="'price'" />
       </div>
     </div>
 
     <div class="form-field">
-      <div class="form-field-header">On Sale</div>
+      <div class="form-field-header">{{ 'On Sale' | translate }}</div>
       <div class="form-field-control">
         <p-toggleswitch [formControlName]="'onSale'" />
       </div>
     </div>
 
     <div class="form-field">
-      <div class="form-field-header">Page Count</div>
+      <div class="form-field-header">{{ 'Page Count' | translate }}</div>
       <div class="form-field-control">
         <input type="number" min="0" [formControlName]="'pageCount'" />
       </div>
     </div>
 
     <div class="form-field">
-      <div class="form-field-header">Author</div>
+      <div class="form-field-header">{{ 'Author' | translate }}</div>
       <div class="form-field-control">
         <input type="text" [formControlName]="'author'" />
       </div>
@@ -38,7 +38,7 @@
     <div class="form-control-buttons">
       <button type="submit" class="btn btn-sm btn-success" [disabled]="form!.invalid">
         <i class="fas fa-save"></i>
-        Save
+        {{ 'Save' | translate }}
       </button>
 
       <div>
@@ -50,12 +50,12 @@
           (click)="onDelete()"
         >
           <i class="fas fa-trash"></i>
-          Delete
+          {{ 'Delete' | translate }}
         </button>
 
         <button type="button" class="btn btn-sm btn-secondary" (click)="onCancel()">
           <i class="fas fa-ban"></i>
-          Cancel
+          {{ 'Cancel' | translate }}
         </button>
       </div>
     </div>

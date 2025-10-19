@@ -1,1 +1,27 @@
-{}
+{
+  "Title": "Titel",
+  "Price": "Pris",
+  "On Sale": "På tilbud",
+  "Page Count": "Antal sider",
+  "Author": "Forfatter",
+  "Save": "Gem",
+  "Delete": "Slet",
+  "Search": "Søg",
+  "New Book": "Ny bog",
+  "Edit Book": "Rediger bog",
+  "Yes": "Ja",
+  "No": "Nej",
+  "Books": "Bøger",
+  "Book Info": "Boginfo",
+  "Edit": "Rediger",
+  "Cancel": "Annuller",
+  "Are you sure you want to continue?": "Er du sikker på, at du vil fortsætte?",
+  "Update Book": "Opdater bog",
+  "Create Book": "Opret bog",
+  "Book Updated!": "Bog opdateret!",
+  "Book Created!": "Bog oprettet!",
+  "Delete Book": "Slet bog",
+  "Are you sure you want to delete this book?": "Er du sikker på, at du vil slette denne bog?",
+  "Book Deleted!": "Bog slettet!",
+  "Something went wrong!": "Noget gik galt!"
+}
