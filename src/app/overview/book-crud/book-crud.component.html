@@ -1,0 +1,63 @@
+<div>
+  <form action="" [formGroup]="form!" (submit)="onSubmit()">
+    <div class="form-field">
+      <div class="form-field-header">Title</div>
+      <div class="form-field-control">
+        <input type="text" [formControlName]="'title'" />
+      </div>
+    </div>
+
+    <div class="form-field">
+      <div class="form-field-header">Price</div>
+      <div class="form-field-control">
+        <input type="number" min="0" [formControlName]="'price'" />
+      </div>
+    </div>
+
+    <div class="form-field">
+      <div class="form-field-header">On Sale</div>
+      <div class="form-field-control">
+        <p-toggleswitch [formControlName]="'onSale'" />
+      </div>
+    </div>
+
+    <div class="form-field">
+      <div class="form-field-header">Page Count</div>
+      <div class="form-field-control">
+        <input type="number" min="0" [formControlName]="'pageCount'" />
+      </div>
+    </div>
+
+    <div class="form-field">
+      <div class="form-field-header">Author</div>
+      <div class="form-field-control">
+        <input type="text" [formControlName]="'author'" />
+      </div>
+    </div>
+
+    <div class="form-control-buttons">
+      <button type="submit" class="btn btn-sm btn-success" [disabled]="form!.invalid">
+        <i class="fas fa-save"></i>
+        Save
+      </button>
+
+      <div>
+        <button
+          *ngIf="book"
+          type="button"
+          class="btn btn-sm btn-danger"
+          style="margin-right: 0.5em"
+          (click)="onDelete()"
+        >
+          <i class="fas fa-trash"></i>
+          Delete
+        </button>
+
+        <button type="button" class="btn btn-sm btn-secondary" (click)="onCancel()">
+          <i class="fas fa-ban"></i>
+          Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

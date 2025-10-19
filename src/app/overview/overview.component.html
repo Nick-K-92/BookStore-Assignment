@@ -1,3 +1,113 @@
-<h1>Overview Component works... Add content here.</h1>
-<h2>Book list</h2>
-<pre>{{ getAllBooks$ | async | json }}</pre>
+<div class="card">
+  <div class="card-header">Books</div>
+  <div class="card-body">
+    <p-table
+      #dt
+      [columns]="cols"
+      [value]="(getAllBooks$ | async) ?? []"
+      [paginator]="true"
+      [rows]="10"
+      [rowsPerPageOptions]="[5, 10, 20]"
+      [globalFilterFields]="globalFilterFields"
+    >
+      <ng-template #caption>
+        <div class="table-header">
+          <button type="button" class="btn btn-sm btn-primary" (click)="onAddNewBook()">
+            <i class="fa fa-plus"></i>
+            New Book
+          </button>
+
+          <div class="search-box">
+            <i class="fas fas fa-search"></i>
+            <input pInputText type="text" (input)="onFilterGlobal($event)" placeholder="Search keyword" />
+          </div>
+
+          <div class="table-filters">
+            On Sale
+            <p-toggleswitch [(ngModel)]="onSaleFilterValue" (onChange)="getData()" />
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template #header let-columns>
+        <tr>
+          <th *ngFor="let col of columns">{{ col.header }}</th>
+          <th><i class="fas fa-eye"></i></th>
+          <th><i class="fas fa-edit"></i></th>
+        </tr>
+      </ng-template>
+
+      <ng-template #body let-rowData let-columns="columns">
+        <tr>
+          <td *ngFor="let col of columns">
+            <div>
+              <!-- default -->
+              <ng-container *ngIf="col.type === undefined"> {{ rowData[col.field] }} </ng-container>
+
+              <ng-container *ngIf="col.type === 'currency'"> {{ rowData[col.field] | currency: 'EUR' }} </ng-container>
+
+              <ng-container *ngIf="col.type === 'checkbox'">
+                <i *ngIf="rowData[col.field] === true" style="color: green" class="fas fa-check"></i>
+                <i *ngIf="rowData[col.field] === false" style="color: red" class="fas fa-times"></i>
+              </ng-container>
+            </div>
+          </td>
+
+          <td (click)="onViewDetails(rowData)" class="pointer">
+            <i class="fas fa-eye"></i>
+          </td>
+          <td (click)="onEditBook(rowData)" class="pointer">
+            <i class="fas fa-edit"></i>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<!-- #region View Details -->
+<p-dialog header="Book Info" [modal]="true" [(visible)]="bookInfoDialogShow" [style]="{ width: '25rem' }">
+  <div *ngIf="selectedBook">
+    <h3>{{ selectedBook.title }}</h3>
+
+    <div class="info-section">
+      <div class="header">Title:</div>
+      {{ selectedBook.title }}
+    </div>
+
+    <div class="info-section">
+      <div class="header">Price:</div>
+      {{ selectedBook.price | currency: 'EUR' }}
+    </div>
+
+    <div class="info-section">
+      <div class="header">Author:</div>
+      {{ selectedBook.author }}
+    </div>
+
+    <div class="info-section">
+      <div class="header">On Sale:</div>
+      <span *ngIf="selectedBook.onSale; else notOnSale" style="color: green">
+        <i class="fas fa-check"></i>
+      </span>
+      <ng-template #notOnSale>
+        <span style="color: red">
+          <i class="fas fa-times"></i>
+        </span>
+      </ng-template>
+    </div>
+  </div>
+</p-dialog>
+<!-- #endregion -->
+
+<!-- #region Crud -->
+<p-dialog header="{{ crudDialogHeader }}" [modal]="true" [(visible)]="bookCrudDialogShow" [style]="{ width: '25rem' }">
+  <mxs-book-crud
+    *ngIf="bookCrudDialogShow"
+    [book]="selectedBook"
+    (save)="onBookCrudSave()"
+    (cancelAction)="bookCrudDialogShow = false"
+  >
+  </mxs-book-crud>
+</p-dialog>
+<!-- #endregion -->

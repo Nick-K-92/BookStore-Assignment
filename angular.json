@@ -89,12 +89,7 @@
           "builder": "@angular-builders/jest:run",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "src/assets/"
-              }
-            ],
+            "assets": ["src/assets/"],
             "styles": ["src/styles.scss"],
             "scripts": []
           }

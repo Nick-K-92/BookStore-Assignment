@@ -16,7 +16,9 @@ import { provideRouter } from '@angular/router';
 import { environment } from '@env/environment';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import Aura from '@primeng/themes/aura';
 import { ApiModule, Configuration } from 'openapi/generated';
+import { providePrimeNG } from 'primeng/config';
 
 import { routes } from './app.routes';
 
@@ -51,5 +53,11 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
+    providePrimeNG({
+      theme: {
+        preset: Aura,
+        options: { darkModeSelector: '.dark-theme' },
+      },
+    }),
   ],
 };

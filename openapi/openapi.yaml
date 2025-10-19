@@ -197,6 +197,9 @@ components:
         lastUpdatedBy:
           description: last updated by in db
           type: string
+        author:
+          description: The book Author
+          type: string
       example:
         id: 14
         title: Lord of the Flies
@@ -205,6 +208,7 @@ components:
         pageCount: 224
         lastUpdated: 1601901810913
         lastUpdatedBy: xxx-user
+        author: Ray Bradbury
     bookCreate:
       description: Fields available for creating a book
       required:
@@ -226,11 +230,16 @@ components:
           format: double
           description: Price for this book
           type: number
+        author:
+          format: string
+          description: The book Author
+          type: string
       example:
         title: Lord of the Flies
         onSale: true
         pageCount: 224
         price: 60.55
+        author: Ray Bradbury
     bookUpdate:
       description: Fields needed for updating a book
       required:
@@ -258,12 +267,17 @@ components:
           format: double
           description: Price for this book
           type: number
+        author:
+          format: string
+          description: The book Author
+          type: string
       example:
         title: Lord of the Flies
         lastUpdated: 1601901810913
         onSale: true
         pageCount: 224
         price: 60.55
+        author: Ray Bradbury
   responses:
     badRequest:
       content:

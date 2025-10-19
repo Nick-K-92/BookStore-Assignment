@@ -6,7 +6,8 @@
     "onSale": true,
     "pageCount": "412",
     "price": "79",
-    "title": "The Forgotten Echo"
+    "title": "The Forgotten Echo",
+    "author": "Clara Hayes"
   },
   {
     "id": "xyxqwe1-56789012-098765",
@@ -15,7 +16,8 @@
     "onSale": true,
     "pageCount": "356",
     "price": "65",
-    "title": "The Enigma Key"
+    "title": "The Enigma Key",
+    "author": "Julian Cross"
   },
   {
     "id": "xyxqwe1-87654321-210987",
@@ -24,7 +26,8 @@
     "onSale": true,
     "pageCount": "317",
     "price": "54",
-    "title": "Secrets Unveiled"
+    "title": "Secrets Unveiled",
+    "author": "Henry Dalton"
   },
   {
     "id": "xyxqwe1-09876543-210987",
@@ -33,7 +36,8 @@
     "onSale": true,
     "pageCount": "299",
     "price": "49",
-    "title": "Whispers of Destiny"
+    "title": "Whispers of Destiny",
+    "author": "Samuel Grant"
   },
   {
     "id": "xyxqwe1-32109876-876543",
@@ -42,7 +46,8 @@
     "onSale": true,
     "pageCount": "278",
     "price": "48",
-    "title": "Whispers in the Dark"
+    "title": "Whispers in the Dark",
+    "author": "Eleanor Hart"
   },
   {
     "id": "xyxqwe1-45678901-987654",
@@ -51,7 +56,8 @@
     "onSale": true,
     "pageCount": "342",
     "price": "69",
-    "title": "The Enchanted Whisper"
+    "title": "The Enchanted Whisper",
+    "author": "Marcus Vale"
   },
   {
     "id": "xyxqwe1-67890123-321098",
@@ -60,7 +66,8 @@
     "onSale": true,
     "pageCount": "416",
     "price": "77",
-    "title": "The Whispering Rose"
+    "title": "The Whispering Rose",
+    "author": "Nathaniel Gray"
   },
   {
     "id": "xyxqwe1-32109876-765432",
@@ -69,6 +76,7 @@
     "onSale": true,
     "pageCount": "299",
     "price": "55",
-    "title": "The Secret Scroll"
+    "title": "The Secret Scroll",
+    "author": "Elena Brooks"
   }
 ]
