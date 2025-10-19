@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpEvent } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
+import { TranslateModule } from '@ngx-translate/core';
 import { BookstoreBffService } from '@openapi';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { InputGroupModule } from 'primeng/inputgroup';
@@ -15,7 +16,14 @@ describe('BookCrudComponent (Spectator)', () => {
   let spectator: Spectator<BookCrudComponent>;
   const createComponent = createComponentFactory({
     component: BookCrudComponent,
-    imports: [CommonModule, ReactiveFormsModule, ToggleSwitchModule, InputGroupModule, InputGroupAddonModule],
+    imports: [
+      CommonModule,
+      ReactiveFormsModule,
+      ToggleSwitchModule,
+      InputGroupModule,
+      InputGroupAddonModule,
+      TranslateModule.forRoot(),
+    ],
     providers: [BookstoreBffService, ConfirmationService, MessageService],
     mocks: [BookstoreBffService, ConfirmationService, MessageService],
   });

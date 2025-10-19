@@ -1,16 +1,10 @@
-import { CommonModule } from '@angular/common';
-import { HttpEvent, HttpResponse } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
+import { HttpEvent } from '@angular/common/http';
 import { By } from '@angular/platform-browser';
 import { provideNoopAnimations } from '@angular/platform-browser/animations';
 import { createComponentFactory, Spectator } from '@ngneat/spectator/jest';
 import { TranslateModule } from '@ngx-translate/core';
-import { BookstoreBffService } from '@openapi';
+import { BookDTO, BookstoreBffService } from '@openapi';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { DialogModule } from 'primeng/dialog';
-import { TableModule } from 'primeng/table';
-import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { Observable, of } from 'rxjs';
 
 import { BookCrudComponent } from './book-crud/book-crud.component';
@@ -18,20 +12,16 @@ import { OverviewComponent } from './overview.component';
 
 describe('OverviewComponent (Spectator)', () => {
   let spectator: Spectator<OverviewComponent>;
+
   const createComponent = createComponentFactory({
     component: OverviewComponent,
-    imports: [
-      CommonModule,
-      FormsModule,
-      TranslateModule.forRoot(),
-      MatCardModule,
-      TableModule,
-      DialogModule,
-      ToggleSwitchModule,
-      BookCrudComponent,
+    imports: [TranslateModule.forRoot()],
+    providers: [
+      provideNoopAnimations(),
+      { provide: BookstoreBffService, useValue: { getBooks: jest.fn() } },
+      { provide: ConfirmationService, useValue: {} },
+      { provide: MessageService, useValue: {} },
     ],
-    providers: [provideNoopAnimations(), BookstoreBffService, ConfirmationService, MessageService],
-    mocks: [BookstoreBffService, ConfirmationService, MessageService],
   });
 
   beforeEach(() => {
@@ -39,12 +29,9 @@ describe('OverviewComponent (Spectator)', () => {
 
     const mockService = spectator.inject(BookstoreBffService);
     mockService.getBooks.mockReturnValue(
-      of(
-        new HttpResponse({
-          status: 200,
-          body: [{ id: '1', title: 'Test Book', pageCount: 100, price: 50, onSale: true }],
-        })
-      ) as unknown as Observable<HttpEvent<any>>
+      of([{ id: '1', title: 'Test Book', pageCount: 100, price: 50, onSale: true }]) as unknown as Observable<
+        HttpEvent<BookDTO[]>
+      >
     );
   });
 
